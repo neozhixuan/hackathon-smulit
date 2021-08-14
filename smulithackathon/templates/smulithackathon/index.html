@@ -22,11 +22,14 @@
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                   </svg>
                 </div>
-                <select class="w-full border bg-gray-100 px-4 py-4 text-sm tracking-wide focus:outline-none focus:shadow-outline rounded pl-12">
+                <form action = "{% url 'smulithackathon:index' %}" method = "POST">
+                {%csrf_token%}
+                <select name = "landingpage" class="w-full border bg-gray-100 px-4 py-4 text-sm tracking-wide focus:outline-none focus:shadow-outline rounded pl-12">
                     <option disabled selected>Are you a business or an individual?</option>
-                    <option>Business</option>
-                    <option>Individual</option>
+                    <option value = "business">Business</option>
+                    <option value = "individual">Individual</option>
                 </select>
+                
               </div>
               <!-- <div class="relative mt-4">
                 <div class="pl-4 pr-4 h-full absolute bottom-0 left-0 flex items-center">
@@ -37,8 +40,9 @@
                 <input type="text" class="w-full border bg-gray-100 px-4 py-4 text-sm tracking-wide focus:outline-none focus:shadow-outline rounded pl-12" placeholder="Mountain View, California">
               </div> -->
               <div>
-                <button class="transition-all duration-300 mt-5 w-full border border-transparent rounded font-semibold tracking-wide text-sm px-5 py-4 focus:outline-none focus:shadow-outline bg-indigo-500 text-gray-100 hover:bg-indigo-600 hover:text-gray-200">Fill in a short quiz</button>
+                <input type = "submit" class="transition-all duration-300 mt-5 w-full border border-transparent rounded font-semibold tracking-wide text-sm px-5 py-4 focus:outline-none focus:shadow-outline bg-indigo-500 text-gray-100 hover:bg-indigo-600 hover:text-gray-200" value = "Fill in a short quiz here.">
               </div>
+            </form>
             </div>
           </div>
           <div class="mt-6 w-full flex-1 lg:mt-0">
@@ -52,6 +56,11 @@
             <img class="mx-auto" src="https://storage.googleapis.com/devitary-image-host.appspot.com/15846471026680582071-Strip-Payment-Logos.png">
           </div>
         </div> -->
+
+        
+        
+
+        
 
         <div class="px-5 sm:px-10 md:px-20 lg:px-10 xl:px-20 py-8 bg-indigo-100" id="features">
           <div class="max-w-screen-xl mx-auto">
@@ -110,7 +119,136 @@
             </div>
           </div>
         </div>
-
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            fetch ('https://api.apify.com/v2/key-value-stores/yaPbKe9e5Et61bl7W/records/LATEST')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                const inf = data.infected;
+                const dis = data.discharged;
+                const active = data.activeCases;
+                const rec = data.recovered;
+                const stablehosp = data.stableHospitalized;
+                const lastupdated = data.lastUpdatedAtApify
+                if (inf != undefined)
+                {
+                    document.querySelector('#infected').innerHTML = `${inf}`;
+                    document.querySelector('#discharged').innerHTML = `${dis}`;
+                    document.querySelector('#active').innerHTML = `${active}`;
+                    document.querySelector('#recovered').innerHTML = `${rec}`;
+                    document.querySelector('#stablehospitalized').innerHTML = `${stablehosp}`;
+                    document.querySelector('#lastUpdatedAtApify').innerHTML = `[Contains information from https://apify.com/tugkan/covid-sg accessed on
+                    ${lastupdated} from {source of data} which is made available under the terms of the Singapore Open Data Licence 
+                    version 1.0 https://data.gov.sg/open-data-licence.] I am not affiliated with MOH, neither will I collect data from any personnel.`;
+                }    
+                else
+                {
+                    document.querySelector('#infected').innerHTML = "Unable to retrieve";
+                }
+            });
+        });
+        </script>
+        <h3 id = "features" class="md:px-20 leading-none font-black text-3xl ml-10 mr-10 mt-10 mb-10">
+          SG Covid Statistics
+        </h3>
+        <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4 md:px-20">
+          
+          <div
+            class="min-w-0 rounded-lg shadow-xs overflow-hidden bg-white dark:bg-gray-800"
+          >
+            <div class="p-4 flex items-center">
+              <div
+                class="p-3 rounded-full text-orange-500 dark:text-orange-100 bg-orange-100 dark:bg-orange-500 mr-4"
+              >
+                <svg fill="currentColor" viewBox="0 0 20 20" class="w-5 h-5">
+                  <path
+                    d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"
+                  ></path>
+                </svg>
+              </div>
+              <div>
+                <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                  Infected
+                </p>
+                <p class="text-lg font-semibold text-gray-700 dark:text-gray-200" id = "infected">
+                  6389
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="min-w-0 rounded-lg shadow-xs overflow-hidden bg-white dark:bg-gray-800"
+          >
+            <div class="p-4 flex items-center">
+              <div
+                class="p-3 rounded-full text-green-500 dark:text-green-100 bg-green-100 dark:bg-green-500 mr-4"
+              >
+                <svg fill="currentColor" viewBox="0 0 20 20" class="w-5 h-5">
+                  <path
+                    fill-rule="evenodd"
+                    d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </div>
+              <div>
+                <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                  Discharged
+                </p>
+                <p class="text-lg font-semibold text-gray-700 dark:text-gray-200" id = "discharged">
+                  
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="min-w-0 rounded-lg shadow-xs overflow-hidden bg-white dark:bg-gray-800"
+          >
+            <div class="p-4 flex items-center">
+              <div
+                class="p-3 rounded-full text-blue-500 dark:text-blue-100 bg-blue-100 dark:bg-blue-500 mr-4"
+              >
+                <svg fill="currentColor" viewBox="0 0 20 20" class="w-5 h-5">
+                  <path
+                    d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"
+                  ></path>
+                </svg>
+              </div>
+              <div>
+                <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                  Active
+                </p>
+                <p class="text-lg font-semibold text-gray-700 dark:text-gray-200" id = "active">
+                  376
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="min-w-0 rounded-lg shadow-xs overflow-hidden bg-white dark:bg-gray-800"
+          >
+            <div class="p-4 flex items-center">
+              <div
+                class="p-3 rounded-full text-teal-500 dark:text-teal-100 bg-teal-100 dark:bg-teal-500 mr-4"
+              >
+                <svg fill="currentColor" viewBox="0 0 20 20" class="w-5 h-5">
+                  <path
+                    fill-rule="evenodd"
+                    d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </div>
+              <div>
+                <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                  Recovered
+                </p>
+                <p class="text-lg font-semibold text-gray-700 dark:text-gray-200" id = "recovered">35</p>
+              </div>
+            </div>
+          </div>
+        </div>
         <!-- <div class="px-5 sm:px-10 md:px-20 lg:px-10 xl:px-20 py-8 bg-gray-100" id="cards">
           <div class="max-w-screen-xl mx-auto">
             <h3 class="leading-none font-black text-3xl">Popular Designers</h3>
@@ -318,7 +456,7 @@
             </div>
           </div>
         </div>
-
+        
 
       </main>
 

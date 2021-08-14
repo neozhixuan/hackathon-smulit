@@ -1,0 +1,95 @@
+{% extends "smulithackathon/layout.html" %}
+
+{% block body %}
+<div class="flex border-b-2 border-t-2 bg-gray-200">
+    <div class="w-2/5 p-8">
+      <span class="text-xl font-semibold block">Business Description</span>
+      <span class="text-gray-600">This information will not be stored.</span>
+    </div>
+    <div class="w-3/5 p-8">
+      <div class="rounded bg-white shadow p-6">
+        <form action = "{% url 'smulithackathon:information'%}" method = "POST">
+          {%csrf_token%}
+        <div class="pb-6">
+          <label for="businesstype" class="font-semibold text-gray-700 block pb-1">What type of business does your company operate? *</label>
+          <div class="flex">
+            <!-- <span style="background-color: #F9FAFB" class="text-gray-600 border border-2 rounded-l px-4 py-2 whitespace-no-wrap">http://</span> -->
+            <!-- SELECT -->
+            <select required name = "businesstype" id = "businesstype" name = "businesstype" class="border border-2 border-l-0 rounded-r px-4 py-2 w-full">
+              <option disabled selected>Type of Business</option>
+              <option value = "Hawker">Hawker</option>
+              <option value = "fnb">F&B</option>
+              <option value = "Office">Office</option>
+              <option value = "Taxi">Taxi</option>
+              <option value = "Gym">Gym</option>
+              <option value = "Tuition">Tuition</option>
+              <option value = "Hotel">Hotel</option>
+              <option value = "Hairdresser">Hairdresser</option>
+              <option value = "Cinema">Cinema</option>
+              <option value = "Concert">Live Concert</option>
+              <option value = "Sports">Sports</option>
+              <option value = "MICE">MICE</option>
+              <option value = "Hospital">Hospital</option>
+          </select>
+          </div>
+        </div>
+        <div class="pb-6">
+          <label for="employees" class="font-semibold text-gray-700 block pb-1">How many employees are present? *</label>
+          <div class="flex">
+            <!-- <span style="background-color: #F9FAFB" class="text-gray-600 border border-2 rounded-l px-4 py-2 whitespace-no-wrap">http://</span> -->
+            <input required name = "employees" id="employees" class="border border-2 border-l-0 rounded-r px-4 py-2 w-full" type="number" placeholder="10" />
+          </div>
+        </div>
+        <div class="pb-6">
+          <label for="salary" class="font-semibold text-gray-700 block pb-1">What is their average salary? *</label>
+          <div class="flex">
+            <span style="background-color: #F9FAFB" class="text-gray-600 border border-2 rounded-l px-4 py-2 whitespace-no-wrap">$</span>
+            <!-- SALARY -->
+            <input required name = "salary" id="salary" class="border border-2 border-l-0 rounded-r px-4 py-2 w-full" type="number" placeholder="2500" />
+          </div>
+        </div>
+        <div class="pb-6">
+          <label for="profit" class="font-semibold text-gray-700 block pb-1">What is your mean annual profit? *</label>
+          <div class="flex">
+            <span style="background-color: #F9FAFB" class="text-gray-600 border border-2 rounded-l px-4 py-2 whitespace-no-wrap">$</span>
+            <input required name = "profit" id="profit" class="border border-2 border-l-0 rounded-r px-4 py-2 w-full" type="number" placeholder="60000" />
+          </div>
+        </div>
+        <div>
+          <input type = "submit" class="transition-all duration-300 mt-5 w-full border border-transparent rounded font-semibold tracking-wide text-sm px-5 py-4 focus:outline-none focus:shadow-outline bg-indigo-500 text-gray-100 hover:bg-indigo-600 hover:text-gray-200" value = "Submit">
+        </div>
+      </form>
+        
+        <!-- <div class="pb-6">
+          <label for="about" class="font-semibold text-gray-700 block pb-1">About</label>
+          <textarea id="msg"class="border border-2 rounded-r px-4 py-2 w-full h-20" name="user_message" placeholder="you@example.com"></textarea>
+          <span class="text-gray-600 pt-1 block">This information is required to provide relevant restrictions.</span>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <!-- <div class="flex">
+    <div class="w-2/5 p-8">
+      <span class="text-xl font-semibold block">Profile</span>
+      <span class="text-gray-600">This information will not be stored.</span>
+    </div>
+    <div class="w-3/5 p-8">
+      <div class="rounded bg-white shadow p-6">
+        <div class="pb-6">
+          <label for="username" class="font-semibold text-gray-700 block pb-1">Username</label>
+          <div class="flex">
+            <span style="background-color: #F9FAFB" class="text-gray-600 border border-2 rounded-l px-4 py-2 whitespace-no-wrap">http://</span>
+            <input id="username" class="border border-2 border-l-0 rounded-r px-4 py-2 w-full" type="text" placeholder="www.example.com" />
+          </div>
+        </div>
+       <div class="pb-6">
+          <label for="about" class="font-semibold text-gray-700 block pb-1">About</label>
+          <textarea id="msg"class="border border-2 rounded-r px-4 py-2 w-full h-20" name="user_message" placeholder="you@example.com"></textarea>
+          <span class="text-gray-600 pt-1 block">Brief description of your profile. URLs are hyperlinked.</span>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+
+{% endblock %}

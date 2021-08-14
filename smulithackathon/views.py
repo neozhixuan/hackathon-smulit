@@ -3,13 +3,40 @@ from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
-
-from .models import User
+from django.utils.crypto import get_random_string
+from django.utils.datastructures import MultiValueDictKeyError
+from .models import *
 
 
 def index(request):
+    if request.method == "POST":
+        try:
+            landingpage = request.POST['landingpage']
+        except MultiValueDictKeyError:
+            return render(request, "smulithackathon/index.html")
+        if request.POST['landingpage'] == "business":
+            return render(request, "smulithackathon/business.html")
+        if request.POST['landingpage'] == "individual":
+            return render(request, "smulithackathon/individual.html")
+        
     return render(request, "smulithackathon/index.html")
 
+def information(request):
+    if request.method == "POST":
+        businesstype = request.POST['businesstype']
+        employees = request.POST['employees']
+        salary = request.POST['salary']
+        profit = request.POST['profit']
+        unique_id = get_random_string(length=15)
+        f = Business(businesstype=businesstype, employees=employees, salary=salary, profit=profit, encryption=unique_id)
+        f.save()
+        return render(request, "smulithackathon/information.html",{
+            "encryption": unique_id,
+            "businesstype": businesstype,
+            "employees": employees,
+            "salary": salary,
+            "profit": int(profit)/12,
+        })
 
 def login_view(request):
     if request.method == "POST":
@@ -22,7 +49,7 @@ def login_view(request):
         # Check if authentication successful
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect(reverse("index"))
+            return HttpResponseRedirect(reverse("smulithackathon:index"))
         else:
             return render(request, "smulithackathon/login.html", {
                 "message": "Invalid username and/or password."
@@ -33,7 +60,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect(reverse("index"))
+    return HttpResponseRedirect(reverse("smulithackathon:index"))
 
 
 def register(request):
@@ -58,6 +85,6 @@ def register(request):
                 "message": "Username already taken."
             })
         login(request, user)
-        return HttpResponseRedirect(reverse("index"))
+        return HttpResponseRedirect(reverse("smulithackathon:index"))
     else:
         return render(request, "smulithackathon/register.html")
