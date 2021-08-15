@@ -4,20 +4,20 @@
 
 <div class="flex border-b-2 border-t-2 bg-gray-200">
   <div class="w-2/5 p-8">
-    <span class="text-xl font-semibold block">Business Description</span>
+    <span class="text-xl font-semibold block">Individual Description</span>
     <span class="text-gray-600">This information will not be stored.</span>
   </div>
   <div class="w-3/5 p-8">
     <div class="rounded bg-white shadow p-6">
-      <form action = "{% url 'smulithackathon:information'%}" method = "POST">
+      <form action = "{% url 'smulithackathon:information2'%}" method = "POST">
         {%csrf_token%}
       <div class="pb-6">
-        <label for="businesstype" class="font-semibold text-gray-700 block pb-1">What type of business does your company operate? *</label>
+        <label for="businesstype" class="font-semibold text-gray-700 block pb-1">What is the place you want to visit? *</label>
         <div class="flex">
           <!-- <span style="background-color: #F9FAFB" class="text-gray-600 border border-2 rounded-l px-4 py-2 whitespace-no-wrap">http://</span> -->
           <!-- SELECT -->
-          <select required name = "businesstype" id = "businesstype" name = "businesstype" class="border border-2 border-l-0 rounded-r px-4 py-2 w-full">
-            <option disabled selected>Type of Business</option>
+          <select required name = "indivtype" id = "businesstype" name = "businesstype" class="border border-2 border-l-0 rounded-r px-4 py-2 w-full">
+            <option disabled selected>Place to Visit</option>
             <option value = "Hawker">Hawker</option>
             <option value = "fnb">F&B</option>
             <option value = "office">Office</option>
@@ -35,25 +35,23 @@
         </div>
       </div>
       <div class="pb-6">
-        <label for="employees" class="font-semibold text-gray-700 block pb-1">How many employees are present? *</label>
+        <label for="businesstype" class="font-semibold text-gray-700 block pb-1">Do you have children? *</label>
         <div class="flex">
           <!-- <span style="background-color: #F9FAFB" class="text-gray-600 border border-2 rounded-l px-4 py-2 whitespace-no-wrap">http://</span> -->
-          <input required name = "employees" id="employees" class="border border-2 border-l-0 rounded-r px-4 py-2 w-full" type="number" placeholder="10" />
+          <!-- SELECT -->
+          <select required id = "businesstype" name = "children" class="border border-2 border-l-0 rounded-r px-4 py-2 w-full">
+            <option disabled selected>Children</option>
+            <option value = "yes">Yes</option>
+            <option value = "no">No</option>
+        </select>
         </div>
       </div>
       <div class="pb-6">
-        <label for="salary" class="font-semibold text-gray-700 block pb-1">What is their mean monthly salary? *</label>
+        <label for="salary" class="font-semibold text-gray-700 block pb-1">What is your mean monthly salary? *</label>
         <div class="flex">
           <span style="background-color: #F9FAFB" class="text-gray-600 border border-2 rounded-l px-4 py-2 whitespace-no-wrap">$</span>
           <!-- SALARY -->
           <input required name = "salary" id="salary" class="border border-2 border-l-0 rounded-r px-4 py-2 w-full" type="number" placeholder="2500" />
-        </div>
-      </div>
-      <div class="pb-6">
-        <label for="profit" class="font-semibold text-gray-700 block pb-1">What is your mean monthly profit? *</label>
-        <div class="flex">
-          <span style="background-color: #F9FAFB" class="text-gray-600 border border-2 rounded-l px-4 py-2 whitespace-no-wrap">$</span>
-          <input required name = "profit" id="profit" class="border border-2 border-l-0 rounded-r px-4 py-2 w-full" type="number" placeholder="60000" />
         </div>
       </div>
       <div>

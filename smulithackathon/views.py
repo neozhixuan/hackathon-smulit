@@ -18,6 +18,10 @@ def index(request):
             return render(request, "smulithackathon/business.html")
         if request.POST['landingpage'] == "individual":
             return render(request, "smulithackathon/individual.html")
+        if request.POST['yes'] == 'yes':
+            return render(request, "smulithackathon/index.html",{
+                "yes": "Thanks for the feedback!"
+            })
         
     return render(request, "smulithackathon/index.html")
 
@@ -36,6 +40,21 @@ def information(request):
             "employees": employees,
             "salary": int(salary) * int(employees),
             "profit": int(profit),
+        })
+
+def information2(request):
+    if request.method == "POST":
+        indivtype = request.POST['indivtype']
+        salary = request.POST['salary']
+        children = request.POST['children']
+        unique_id = get_random_string(length=15)
+        f = Individual(indivtype=indivtype, salary=salary, encryption=unique_id, children=children)
+        f.save()
+        return render(request, "smulithackathon/information2.html",{
+            "encryption": unique_id,
+            "indivtype": indivtype,
+            "salary": int(salary),
+            "children": children,
         })
 
 def login_view(request):

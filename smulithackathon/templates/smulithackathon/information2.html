@@ -2,45 +2,45 @@
 
 {% block body %}
 <script>
-function openFeedback(){
-  document.getElementById("modal").style.display = "block";
-}
-function closeFeedback(){
-  document.getElementById("modal").style.display = "none";
-}
-</script>
-<div id = "modal" style="display:none; z-index: 10000;">
-  <div id = "modal-content">
-    <button onclick="closeFeedback()" class="w3-bar-item w3-button w3-small" style = "margin: 0; padding: 0;">Close &times;</button>
-    <form action = "{% url 'smulithackathon:index' %}" style = "text-align: left;" method = "POST">
-      {%csrf_token%}
-      <input type = "hidden" value = "yes" name = 'yes'>
-      <span class="inline-flex px-2">Provide some feedback for our app!</span><br>
-      Name:<input type = "text" name = "name"  class = "form-control">{{stalls.name}}<br>
-      Email:<input type = "text" name = "stalltype"  class = "form-control"><br>
-      How can we improve:<input type = "text" name = "address"  class = "form-control"><br>
-      Did you enjoy the app?:<input type = "checkbox" name = "details"  class = "form-control"><br>
-      <hr>
-      Your email (for contact purposes):<input required type = "text" name = "email" value = "{{stalls.pricerange}}" class = "form-control"><br>
-      <input type = "submit" value = "Submit" class = "btn btn-primary">
-    </form>
+  function openFeedback(){
+    document.getElementById("modal").style.display = "block";
+  }
+  function closeFeedback(){
+    document.getElementById("modal").style.display = "none";
+  }
+  </script>
+  <div id = "modal" style="display:none; z-index: 10000;">
+    <div id = "modal-content">
+      <button onclick="closeFeedback()" class="w3-bar-item w3-button w3-small" style = "margin: 0; padding: 0;">Close &times;</button>
+      <form action = "{% url 'smulithackathon:index' %}" style = "text-align: left;" method = "POST">
+        {%csrf_token%}
+        <input type = "hidden" value = "yes" name = 'yes'>
+        <span class="inline-flex px-2">Provide some feedback for our app!</span><br>
+        Name:<input type = "text" name = "name"  class = "form-control">{{stalls.name}}<br>
+        Email:<input type = "text" name = "stalltype"  class = "form-control"><br>
+        How can we improve:<input type = "text" name = "address"  class = "form-control"><br>
+        Did you enjoy the app?:<input type = "checkbox" name = "details"  class = "form-control"><br>
+        <hr>
+        Your email (for contact purposes):<input required type = "text" name = "email" value = "{{stalls.pricerange}}" class = "form-control"><br>
+        <input type = "submit" value = "Submit" class = "btn btn-primary">
+      </form>
+    </div>
   </div>
-</div>
-<button  class = "ml-20" style = "margin-right: 10px; display: inline-block; padding:10px 15px;
-  width:auto;
-    background: rgb(249, 48, 66);
-  color:#fff;
-  transition:.5s all;
-  border-radius:10px;
-  cursor:pointer;" onclick = "openFeedback()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-</svg> Feedback </button>
+  <button style = "margin-right: 10px; display: inline-block; padding:10px 15px;
+    width:auto;
+      background: rgb(249, 48, 66);
+    color:#fff;
+    transition:.5s all;
+    border-radius:10px;
+    cursor:pointer;" onclick = "openFeedback()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+  </svg> Feedback </button>
 <div class="mt-5 mb-5 text-center">
     <div class="p-2">
         <div class="inline-flex items-center bg-white leading-none text-blue-600 rounded-full p-2 shadow text-teal text-sm">
             <span class="inline-flex bg-blue-600 text-white rounded-full h-6 px-3 justify-center items-center">Based on your results:</span>
-            <span class="inline-flex px-2">Your business type: {{businesstype}}. Your company has {{employees}} employees.</span>
+            <span class="inline-flex px-2">Location to visit: {{indivtype}}. Your earn about ${{salary}} monthly.</span>
         </div>
     </div>
 </div>
@@ -50,7 +50,7 @@ function closeFeedback(){
       <div>
         <h2 class="text-center text-gray-800 text-4xl lg:text-5xl font-bold leading-tight">COVID Restrictions</h2>
         <div class="my-4 mx-auto w-12 h-2 border-4 border-indigo-500"></div>
-        <div class="text-center text-gray-700 font-light">Previous and new changes to the restrictions for {{businesstype}}s specifically.</div>
+        <div class="text-center text-gray-700 font-light">Previous and new changes to the restrictions for {{indivtype}} specifically.</div>
       </div>
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:mx-12">
         <div class="relative mx-auto mt-8 rounded-lg shadow max-w-sm p-10 bg-gray-100 text-gray-700 leading-snug flex flex-col justify-between">
@@ -69,13 +69,13 @@ function closeFeedback(){
           
           <div class="mx-auto w-full border border-gray-300 my-8"></div>
           <div class="mt-2">
-            {%if businesstype == "Hawker"%}
+            {%if indivtype == "Hawker"%}
             Dine-in allowed with group sizes of up to 2 persons, regardless of vaccination status<br><br>
             Even if you're vaccinated, still only max of 2 people per group<br><br>
             Coffee shops refer generally to F&B establishments with SFA coffee shop/ eating house/ canteen license<br><br>
             {%endif%}
 
-            {% if businesstype == "fnb"%}
+            {% if indivtype == "fnb"%}
             Dine-in allowed with group sizes of up to 5 persons if ALL vaccinated*; provision for children 12 years and below applies^<br><br>
             Dine-in not allowed otherwise.<br><br>
             You have to wait 2 weeks after your 2nd shot to be considered "fully vaccinated".<br><br>
@@ -83,34 +83,34 @@ function closeFeedback(){
             Use the Dine-In Group Checker by checkfirst.gov.sg to calculate whether your group can dine-in together<br><br>
             {% endif %}
 
-            {% if businesstype == "office"%}
+            {% if indivtype == "office"%}
             From 19 August:<br><br>
             Up to 50% of employees who can work from home can return to the workplace<br><br>
             Social gatherings allowed<br><br>
             {% endif %}
-            {% if businesstype == "taxi"%}
+            {% if indivtype == "taxi"%}
             No change.
             {% endif %}
-            {% if businesstype == "gym"%}
+            {% if indivtype == "gym"%}
             Indoor mask-off high-intensity activities and classes capped at 30 persons<br><br>
             Indoor mask-off activities at gyms/fitness studios to resume in groups of up to 5 persons if all individuals are vaccinated* (SportSG will provide more details on the provision for children 12 years and below)<br><br>
 <br><br>
             Indoor mask-on and all outdoor (mask-on and mask-off) activities and classes capped at 50 persons<br><br>
             In groups of up to 5 persons for mask-on indoor activities and all outdoor activities only. Irrespective of vaccination or test status.<br><br>
             {% endif %}
-            {% if businesstype == "tuition"%}
+            {% if indivtype == "tuition"%}
             Up to 50 persons per class in groups of up to 5 persons, strongly encouraged to go online.<br><br>
             Refer to MOE’s advisory for further details (Separate safe management measures for higher-risk arts and sports classes apply.)<br><br>
             Home-based tuition/enrichment which run in-person lessons are subject to the prevailing national group size limit and number of unique visitors allowed per household per day.<br><br>
             {% endif %}
-            {% if businesstype == "hotel"%}
+            {% if indivtype == "hotel"%}
             Group of up to 5 persons per room for staycations (except where individuals are all from the same household, subject to the room’s maximum capacity)<br><br>
             {% endif %}
-            {% if businesstype == "hairdresser"%}
+            {% if indivtype == "hairdresser"%}
             (Massage Establishments included)<br><br>
             Services which require masks to be removed (e.g. facials, saunas, make-up services) allowed to resume if customer is vaccinated*.<br><br>
             {% endif %}
-            {% if businesstype == "cinema"%}
+            {% if indivtype == "cinema"%}
             From 10 Aug:<br><br>
             Up to 500 persons if all vaccinated*; up to 50 persons if unvaccinated.<br><br>
             F&B may be served in groups of up to 5 persons if all customers are vaccinated*; provision for children 12 years and below applies^<br><br>
@@ -118,7 +118,7 @@ function closeFeedback(){
             From 19 August:<br><br>
             Up to 1,000 persons if all vaccinated*; up to 50 persons if unvaccinated; provision for children 12 years and below applies^<br><br>
             {% endif %}
-            {% if businesstype == "concert"%}
+            {% if indivtype == "concert"%}
             From 10 Aug:<br><br>
             Up to 500 attendees if all vaccinated*; up to 50 attendees if unvaccinated; provision for children 12 years and below applies^<br><br>
             Unmasking and singing/ playing of instruments that require expulsion of air for live performances may resume, subject to updated safe management measures<br><br>
@@ -126,7 +126,7 @@ function closeFeedback(){
             From 19 August:<br><br>
             Up to 1,000 attendees if all vaccinated*; up to 50 attendees if unvaccinated; provision for children 12 years and below applies^<br><br>
             {% endif %}
-            {% if businesstype == "sports"%}
+            {% if indivtype == "sports"%}
             From 10 Aug:<br><br>
             Up to 500 attendees if all vaccinated*; up to 50 attendees if unvaccinated; provision for children 12 years and below applies^<br><br>
             Sports/physical exercises: Up to 5 people (including coach) for group activities. For indoor unmasked activities, all participants must be fully vaccinated*.<br><br>
@@ -134,7 +134,7 @@ function closeFeedback(){
             From 19 August:<br><br>
             Up to 1,000 attendees if all vaccinated*; up to 50 attendees if unvaccinated; provision for children 12 years and below applies^<br><br>
             {% endif %}
-            {% if businesstype == "mice"%}
+            {% if indivtype == "mice"%}
             From 10 Aug:<br><br>
             Up to 500 attendees if all vaccinated*; up to 50 persons if unvaccinated; provision for children 12 years and below applies^<br><br>
             Unmasking may resume, subject to updated safe management measures<br><br>
@@ -143,7 +143,7 @@ function closeFeedback(){
             Up to 1,000 attendees if all vaccinated*; up to 50 attendees if unvaccinated; provision for children 12 years and below applies^<br><br>
 
             {% endif %}
-            {% if businesstype == "hospital"%}
+            {% if indivtype == "hospital"%}
             No change.
             {% endif %}
           </div>
@@ -165,66 +165,66 @@ function closeFeedback(){
             </div>
             <div class="mx-auto w-full border border-gray-300 my-8"></div>
             <div class="mt-2">
-                {%if businesstype == "Hawker"%}
+                {%if indivtype == "Hawker"%}
                 Dining-in to cease<br><br>
                 Only takeaway and delivery allowed<br><br>
                 Reduction of social gathering group sizes from a maximum of 5 persons to a maximum of 2 persons<br><br>
                 {%endif%}
-                {%if businesstype == "fnb"%}
+                {%if indivtype == "fnb"%}
                 Dining-in to cease<br><br>
                 Only takeaway and delivery allowed<br><br>
                 Reduction of social gathering group sizes from a maximum of 5 persons to a maximum of 2 persons<br><br>
                 {%endif%}
-                {%if businesstype == "office"%}
+                {%if indivtype == "office"%}
                 Current rules since 22 July:<br><br>
                 Work-from-home as the default<br><br>
                 No cross-deployment<br><br>
                 Social gatherings not allowed<br><br>
                 {%endif%}
-                {%if businesstype == "taxi"%}
+                {%if indivtype == "taxi"%}
                 Up to 5 passengers for taxis/PHCs, excluding the driver (yes, e.g. MPV taxis/6-seater PHCs. Normal taxis will continue to take only 4 pax as per their vehicle capacity limit)<br><br>
                 Paid car-pooling services that are matched through licensed ride-hail platforms, such as GrabHitch and RydePool, may resume<br><br>
                 Masks continue to be mandatory<br><br>
                 {%endif%}
-                {%if businesstype == "gym"%}
+                {%if indivtype == "gym"%}
                 Indoor mask-off activities at gyms/fitness studios to resume in groups of up to 2 persons if any individual in the group is ineligible* or are children aged 12 years and below; such activities may resume in groups of up to 5 persons if all individuals are eligible*. Class sizes for mask-off high-intensity activities capped at 30 persons<br><br>
  
                 Indoor mask-on and all outdoor classes capped at 50 persons <br><br>
 
                 In groups of up to 5 persons for mask-on indoor activities and all outdoor activities only
                 {%endif%}
-                {%if businesstype == "tuition"%}
+                {%if indivtype == "tuition"%}
                 Up to 50 persons per class in groups of up to 5 persons, refer to MOE’s advisory for further details. (Separate safe management measures for higher-risk arts and sports classes apply.)
                 {%endif%}
-                {%if businesstype == "hotel"%}
+                {%if indivtype == "hotel"%}
                 Group of up to 5 persons per room for staycations (except where individuals are all from the same household, subject to the room’s maximum capacity)
                 {%endif%}
-                {%if businesstype == "hairdresser"%}
+                {%if indivtype == "hairdresser"%}
                 Services which require masks to be removed (e.g. facials, saunas) allowed to resume<br><br>
  
                 Prevailing safe management measures should still be observed
                 {%endif%}
-                {%if businesstype == "cinema"%}
+                {%if indivtype == "cinema"%}
                 Up to 250 persons with PET, up to 50 persons without PET<br><br>
  
                 F&B may be served if all customers are in groups of no more than 2 persons if any individual in the group is ineligible*; in groups of no more than 5 persons if all individuals are eligible*. Children aged 12 years and below may make up half the group if from different households, and up to 4 children if all are from the same household<br><br>
                 
                 If F&B service is not allowed, customers may be in groups of up to 5 persons
                 {%endif%}
-                {%if businesstype == "concert"%}
+                {%if indivtype == "concert"%}
                 Up to 250 persons with PET; up to 50 persons without PET<br><br>
 
                 Unmasking and singing/ playing of instruments that require expulsion of air for live performances may resume, subject to updated safe management measures
                 {%endif%}
-                {%if businesstype == "sports"%}
+                {%if indivtype == "sports"%}
                 Up to 250 persons with PET, up to 50 persons without PET
                 {%endif%}
-                {%if businesstype == "mice"%}
+                {%if indivtype == "mice"%}
                 Up to 250 persons with PET; up to 50 persons without PET<br><br>
  
                 Unmasking may be allowed, subject to updated safe management measures<br><br>
                 {%endif%}
-                {%if businesstype == "hospital"%}
+                {%if indivtype == "hospital"%}
                 All visitation to hospital wards will be stopped from 5 - 18 August 2021 (both dates inclusive), except for the patient groups below, who will be allowed visitation on a conditional and case-by-case basis, as assessed by the hospital:<br><br>
                 a. Patients whose conditions have turned very ill;<br><br>
                 b. Paediatric patients;<br><br>
@@ -248,34 +248,34 @@ function closeFeedback(){
         <div class="text-center text-gray-700 font-light">Schemes we think are relevant to your situation</div>
       </div>
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:mx-12">
-          {% if businesstype == "Hawker" %}
+          {% if salary < 2000  %}
+          <div class="relative mx-auto mt-8 rounded-lg shadow max-w-sm p-10 bg-gray-100 text-gray-700 leading-snug flex flex-col justify-between">
+            <div class="mt-2">
+              
+  Provides temporary financial support to lower- and middle-income workers (both employees and Self-Employed Persons) with less means and family support, who have been affected by the economic impact of COVID-19.
+
+
+            </div>
+            <div class="mx-auto w-full border border-gray-300 my-8"></div>
+            <div>
+              <div class="flex items-center">
+                  <div>
+                    <img class="w-12 h-12 rounded-full border-2 border-indigo-400"
+                      src="https://www.gov.sg/-/media/gov/logo.png">
+                  </div>
+                  <div class="ml-4">
+                    <div class="font-bold">COVID-19 Recovery Grant</div>
+                    <div class="text-sm text-gray-600 mt-1">Apply online from  <a href="#">18 Jan 2021 to 31 Dec 2021</a></div>
+                  </div>
+                </div>
+            </div>
+          </div>
           <div class="relative mx-auto mt-8 rounded-lg shadow max-w-sm p-10 bg-gray-100 text-gray-700 leading-snug flex flex-col justify-between">
           
           
           
           <div class="mt-2">
-            One-off cash assistance of $500 per stallholder of market and hawker stalls in centres managed by NEA or NEA-appointed operators.
-          </div>
-          <div class="mx-auto w-full border border-gray-300 my-8"></div>
-          <div>
-            <div class="flex items-center">
-                <div>
-                  <img class="w-12 h-12 rounded-full border-2 border-indigo-400"
-                    src="https://www.gov.sg/-/media/gov/logo.png">
-                </div>
-                <div class="ml-4">
-                  <div class="font-bold">Market and Hawker Centre Relief Fund</div>
-                  <div class="text-sm text-gray-600 mt-1">Implemented <a href="#">in Budget 2021</a></div>
-                </div>
-              </div>
-        </div>
-          </div>
-          <div class="relative mx-auto mt-8 rounded-lg shadow max-w-sm p-10 bg-gray-100 text-gray-700 leading-snug flex flex-col justify-between">
-          
-          
-          
-          <div class="mt-2">
-            The Hawkers' Productivity Grant (HPG) is a funding support to encourage individual stallholders to be more productive with the use of automation equipment.  The HPG will co-fund the purchase of suitable automation equipment by stallholders, to help them achieve higher productivity in preparing and serving of sale items to customers through the use of technology.
+            Provides temporary financial support for lower- to middle-income workers who are financially impacted by the tightening of safe management measures (SMMs) under Heightened Alert.
           </div>
           <div>
             <div class="mx-auto w-full border border-gray-300 my-8"></div>
@@ -285,21 +285,20 @@ function closeFeedback(){
                     src="https://www.gov.sg/-/media/gov/logo.png">
                 </div>
                 <div class="ml-4">
-                  <div class="font-bold">Hawker Productivity Grant</div>
-                  <div class="text-sm text-gray-600 mt-1">Implemented <a href="#">08 July 2021</a></div>
+                  <div class="font-bold">COVID-19 Recovery Grant - Temporary (Aug 2021)</div>
+                  <div class="text-sm text-gray-600 mt-1">Apply online from <a href="#">1 Aug 2021 to 31 Aug 2021</a></div>
                 </div>
               </div>
         </div>
           
           </div>
-          {% endif %}
-          {% if businesstype == "fnb" %}
+          {% elif children == "yes" %}
           <div class="relative mx-auto mt-8 rounded-lg shadow max-w-sm p-10 bg-gray-100 text-gray-700 leading-snug flex flex-col justify-between">
           
           
           
           <div class="mt-2">
-            The largest sum of support your restaurant is likely to receive would be via the Jobs Support Scheme (JSS). Since the foodservice sector has been more severely hit than some other industries, the cash payout from this scheme is higher than most other industries.The Jobs Support Scheme (JSS) issued cash payouts to restaurants for 60% of the first $4,600 of wages for every local worker (Singapore Citizens and Permanent Residents) in employment.
+            Provides temporary financial support for lower- to middle-income workers who are financially impacted by the tightening of safe management measures (SMMs) under Heightened Alert.
           </div>
           <div class="mx-auto w-full border border-gray-300 my-8"></div>
           <div>
@@ -309,8 +308,8 @@ function closeFeedback(){
                     src="https://www.gov.sg/-/media/gov/logo.png">
                 </div>
                 <div class="ml-4">
-                  <div class="font-bold"> Jobs Support Scheme</div>
-                  <div class="text-sm text-gray-600 mt-1">Implemented <a href="#">22 July until Aug 18 2021</a></div>
+                  <div class="font-bold"> COVID-19 Recovery Grant - Temporary (Aug 2021)</div>
+                  <div class="text-sm text-gray-600 mt-1">Apply online from <a href="#">1 Aug 2021 to 31 Aug 2021</a></div>
                 </div>
               </div>
         </div>
@@ -320,7 +319,7 @@ function closeFeedback(){
           
           
           <div class="mt-2">
-            If you have foreign workers in your restaurant staff, you will be entitled to a waiver of all Foreign Worker Levy for April and May and a 2-month rebate of levies paid in 2020. The cost of Foreign Worker Levy (FWL) ranges between $300 to $800 per staff monthly, depending on their skill level and your restaurant’s quota level.
+            One-off $200 top-up to Child Development Account (CDA) for Singapore Citizens aged 0 to 6 in 2021.
           </div>
           <div>
             <div class="mx-auto w-full border border-gray-300 my-8"></div>
@@ -330,15 +329,15 @@ function closeFeedback(){
                     src="https://www.gov.sg/-/media/gov/logo.png">
                 </div>
                 <div class="ml-4">
-                  <div class="font-bold">Waiver and Rebate on Foreign Worker Levy (FWL)</div>
-                  <div class="text-sm text-gray-600 mt-1">Implemented <a href="#">by Chope</a></div>
+                  <div class="font-bold">Top-up to Child Development Account</div>
+                  <div class="text-sm text-gray-600 mt-1">Apply by <a href="#">Sep 2021</a></div>
                 </div>
               </div>
         </div>
           
           </div>
           {% endif %}
-          {% if businesstype == "office" %}
+          <!-- {% if indivtype == "office" %}
           <div class="relative mx-auto mt-8 rounded-lg shadow max-w-sm p-10 bg-gray-100 text-gray-700 leading-snug flex flex-col justify-between">
           
           
@@ -383,431 +382,8 @@ If you are presently unemployed due to retrenchment or contract termination, ple
         </div>
           
           </div>
-          {% endif %}
-          {% if businesstype == "taxi" %}
-          <div class="relative mx-auto mt-8 rounded-lg shadow max-w-sm p-10 bg-gray-100 text-gray-700 leading-snug flex flex-col justify-between">
-          
-          
-          
-          <div class="mt-2">
-            The Land Transport Authority (LTA) said on Friday (July 23) that drivers will get an additional $10 per vehicle per day from July 22 to Aug 31. This will then be reduced to $5 per day in September.
-          </div>
-          <div class="mx-auto w-full border border-gray-300 my-8"></div>
-          <div>
-            <div class="flex items-center">
-                <div>
-                  <img class="w-12 h-12 rounded-full border-2 border-indigo-400"
-                    src="https://www.gov.sg/-/media/gov/logo.png">
-                </div>
-                <div class="ml-4">
-                  <div class="font-bold">Covid-19 Driver Relief Fund.</div>
-                  <div class="text-sm text-gray-600 mt-1">Implemented <a href="#">July 22 to Aug 31</a></div>
-                </div>
-              </div>
-        </div>
-          </div>
-          <div class="relative mx-auto mt-8 rounded-lg shadow max-w-sm p-10 bg-gray-100 text-gray-700 leading-snug flex flex-col justify-between">
-          
-          
-          
-          <div class="mt-2">
-          1 year road tax rebate: 100% (commercial vehicles) - 60% (motorcycles)- 15% (all other vehicles, including taxis)
-          </div>
-          <div>
-            <div class="mx-auto w-full border border-gray-300 my-8"></div>
-            <div class="flex items-center">
-                <div>
-                  <img class="w-12 h-12 rounded-full border-2 border-indigo-400"
-                    src="https://www.gov.sg/-/media/gov/logo.png">
-                </div>
-                <div class="ml-4">
-                  <div class="font-bold">Rebates for petrol/petrol-hybrid vehicles</div>
-                  <div class="text-sm text-gray-600 mt-1">Implemented <a href="#">
-                    1 year from Aug 2021 to Jul 2022</a></div>
-                </div>
-              </div>
-        </div>
-          
-          </div>
-          {% endif %}
-          {% if businesstype == "gym" %}
-          <div class="relative mx-auto mt-8 rounded-lg shadow max-w-sm p-10 bg-gray-100 text-gray-700 leading-snug flex flex-col justify-between">
-          
-          
-          
-          <div class="mt-2">
-            Those eligible for this grant will receive a one-time disbursement, which takes overhead costs such as rental and salaries into account, ranging from $5,000 to $100,000 for the three-week period.
-          </div>
-          <div class="mx-auto w-full border border-gray-300 my-8"></div>
-          <div>
-            <div class="flex items-center">
-                <div>
-                  <img class="w-12 h-12 rounded-full border-2 border-indigo-400"
-                    src="https://www.gov.sg/-/media/gov/logo.png">
-                </div>
-                <div class="ml-4">
-                  <div class="font-bold">Sports Resilience Package (SRP)</div>
-                  <div class="text-sm text-gray-600 mt-1">Implemented <a href="#">in March</a></div>
-                </div>
-              </div>
-        </div>
-          </div>
-          <div class="relative mx-auto mt-8 rounded-lg shadow max-w-sm p-10 bg-gray-100 text-gray-700 leading-snug flex flex-col justify-between">
-          
-          
-          
-          <div class="mt-2">
-            The largest sum of support your restaurant is likely to receive would be via the Jobs Support Scheme (JSS). Since the foodservice sector has been more severely hit than some other industries, the cash payout from this scheme is higher than most other industries.The Jobs Support Scheme (JSS) issued cash payouts to restaurants for 60% of the first $4,600 of wages for every local worker (Singapore Citizens and Permanent Residents) in employment.
-          </div>
-          <div>
-            <div class="mx-auto w-full border border-gray-300 my-8"></div>
-            <div class="flex items-center">
-                <div>
-                  <img class="w-12 h-12 rounded-full border-2 border-indigo-400"
-                    src="https://www.gov.sg/-/media/gov/logo.png">
-                </div>
-                <div class="ml-4">
-                  <div class="font-bold">Jobs Support Scheme</div>
-                  <div class="text-sm text-gray-600 mt-1">Implemented <a href="#">22 July until Aug 18 2021</a></div>
-                </div>
-              </div>
-        </div>
-          
-          </div>
-          {% endif %}
-          {% if businesstype == "tuition" %}
-          <div class="relative mx-auto mt-8 rounded-lg shadow max-w-sm p-10 bg-gray-100 text-gray-700 leading-snug flex flex-col justify-between">
-          
-          
-          
-          <div class="mt-2">
-            The Ministry of Education (MOE) will extend the suspension of tuition loan repayments and interest charges by another four months, until Sept 30. With the extension, no interest, whether standard or penalty interest, will be levied on any outstanding loan for the additional four-month period.
-          </div>
-          <div class="mx-auto w-full border border-gray-300 my-8"></div>
-          <div>
-            <div class="flex items-center">
-                <div>
-                  <img class="w-12 h-12 rounded-full border-2 border-indigo-400"
-                    src="https://www.gov.sg/-/media/gov/logo.png">
-                </div>
-                <div class="ml-4">
-                  <div class="font-bold">Covid-19 Recovery Grant</div>
-                  <div class="text-sm text-gray-600 mt-1">Implemented <a href="#">on Jan 18 2021</a></div>
-                </div>
-              </div>
-        </div>
-          </div>
-          
-          {% endif %}
-          {% if businesstype == "hotel" %}
-          <div class="relative mx-auto mt-8 rounded-lg shadow max-w-sm p-10 bg-gray-100 text-gray-700 leading-snug flex flex-col justify-between">
-          
-          
-          
-          <div class="mt-2">
-            This scheme supports third-party cost of professional cleaning services incurred by tourism-related establishments impacted by COVID-19.
-          </div>
-          <div class="mx-auto w-full border border-gray-300 my-8"></div>
-          <div>
-            <div class="flex items-center">
-                <div>
-                  <img class="w-12 h-12 rounded-full border-2 border-indigo-400"
-                    src="https://www.gov.sg/-/media/gov/logo.png">
-                </div>
-                <div class="ml-4">
-                  <div class="font-bold">COVID-19 (Coronavirus Disease 2019) Cleaning Support for Tourism-related Establishments</div>
-                  <div class="text-sm text-gray-600 mt-1">Ended <a href="#">31 Jul 2021.</a></div>
-                </div>
-              </div>
-        </div>
-          </div>
-          <div class="relative mx-auto mt-8 rounded-lg shadow max-w-sm p-10 bg-gray-100 text-gray-700 leading-snug flex flex-col justify-between">
-          
-          
-          
-            <div class="mt-2">
-              The largest sum of support your restaurant is likely to receive would be via the Jobs Support Scheme (JSS). Since the foodservice sector has been more severely hit than some other industries, the cash payout from this scheme is higher than most other industries.The Jobs Support Scheme (JSS) issued cash payouts to restaurants for 60% of the first $4,600 of wages for every local worker (Singapore Citizens and Permanent Residents) in employment.
-            </div>
-            <div>
-              <div class="mx-auto w-full border border-gray-300 my-8"></div>
-              <div class="flex items-center">
-                  <div>
-                    <img class="w-12 h-12 rounded-full border-2 border-indigo-400"
-                      src="https://www.gov.sg/-/media/gov/logo.png">
-                  </div>
-                  <div class="ml-4">
-                    <div class="font-bold">Jobs Support Scheme</div>
-                    <div class="text-sm text-gray-600 mt-1">Implemented <a href="#">22 July until Aug 18 2021</a></div>
-                  </div>
-                </div>
-          </div>
-          
-          </div>
-          {% endif %}
-          {% if businesstype == "hairdresser" %}
-          <div class="relative mx-auto mt-8 rounded-lg shadow max-w-sm p-10 bg-gray-100 text-gray-700 leading-snug flex flex-col justify-between">
-          
-          
-          
-            <div class="mt-2">
-              The COVID-19 Recovery Grant (CRG) provides temporary financial support to workers in lower- to middle-income households who are presently experiencing involuntary job loss, involuntary no-pay leave (NPL) or income loss due to the economic impact of COVID-19.
-            </div>
-            <div class="mx-auto w-full border border-gray-300 my-8"></div>
-            <div>
-              <div class="flex items-center">
-                  <div>
-                    <img class="w-12 h-12 rounded-full border-2 border-indigo-400"
-                      src="https://www.gov.sg/-/media/gov/logo.png">
-                  </div>
-                  <div class="ml-4">
-                    <div class="font-bold">COVID-19 Recovery Grant</div>
-                    <div class="text-sm text-gray-600 mt-1">Apply by <a href="#">31 December 2021</a></div>
-                  </div>
-                </div>
-          </div>
-            </div>
-            <div class="relative mx-auto mt-8 rounded-lg shadow max-w-sm p-10 bg-gray-100 text-gray-700 leading-snug flex flex-col justify-between">
-            
-            
-            
-            <div class="mt-2">
-              Provides temporary financial support for lower- to middle-income workers who are financially impacted by the tightening of safe management measures (SMMs) under Heightened Alert.<br><br>
-  If you are presently unemployed due to retrenchment or contract termination, please apply for the COVID-19 Recovery Grant instead.
-            </div>
-            <div>
-              <div class="mx-auto w-full border border-gray-300 my-8"></div>
-              <div class="flex items-center">
-                  <div>
-                    <img class="w-12 h-12 rounded-full border-2 border-indigo-400"
-                      src="https://www.gov.sg/-/media/gov/logo.png">
-                  </div>
-                  <div class="ml-4">
-                    <div class="font-bold">COVID-19 Recovery Grant - Temporary (Aug 2021)</div>
-                    <div class="text-sm text-gray-600 mt-1">Apply by <a href="#">31 August 2021</a></div>
-                  </div>
-                </div>
-          </div>
-            
-            </div>
-          {% endif %}
-          {% if businesstype == "cinema" %}
-          <div class="relative mx-auto mt-8 rounded-lg shadow max-w-sm p-10 bg-gray-100 text-gray-700 leading-snug flex flex-col justify-between">
-          
-          
-          
-          <div class="mt-2">
-            IMDA will continue to support impactful, ground-up initiatives by media associations. For one, IMDA has contributed to the Singapore Association for Motion Picture Professionals’ (SAMPP) COVID-19 Relief Fund which will provide grant support between $300 and $500 to film and TV media practitioners whose work have been impacted by COVID-19.
-          </div>
-          <div class="mx-auto w-full border border-gray-300 my-8"></div>
-          <div>
-            <div class="flex items-center">
-                <div>
-                  <img class="w-12 h-12 rounded-full border-2 border-indigo-400"
-                    src="https://www.gov.sg/-/media/gov/logo.png">
-                </div>
-                <div class="ml-4">
-                  <div class="font-bold">SAMPP COVID-19 Relief Fund</div>
-                  <div class="text-sm text-gray-600 mt-1">Implemented <a href="#">by IMDA</a></div>
-                </div>
-              </div>
-        </div>
-          </div>
-          <div class="relative mx-auto mt-8 rounded-lg shadow max-w-sm p-10 bg-gray-100 text-gray-700 leading-snug flex flex-col justify-between">
-          
-          
-          
-          <div class="mt-2">
-            IMDA will help local media companies strengthen their capabilities and increase their competitiveness by leveraging the expertise of MNC partners. IMDA has worked with international content partners such as WarnerMedia Entertainment Networks APAC and ViacomCBS Networks Asia, to bring forward the implementation of the Capabilities Partnership Programme (CPP), which pairs media MNCs with local media companies to develop “Made in Singapore” content. For example, ViacomCBS Networks Asia will develop up to three regional entertainment or family content Intellectual Properties (IPs) in May 2020. WarnerMedia Entertainment Networks APAC plans to commence development of up to three regional original content IPs for HBO Asia in June 2020. The CPP programme is expected to benefit 80 to 100 local media companies over the next 12 months.
-          </div>
-          <div>
-            <div class="mx-auto w-full border border-gray-300 my-8"></div>
-            <div class="flex items-center">
-                <div>
-                  <img class="w-12 h-12 rounded-full border-2 border-indigo-400"
-                    src="https://www.gov.sg/-/media/gov/logo.png">
-                </div>
-                <div class="ml-4">
-                  <div class="font-bold">Capability Partnership Programme</div>
-                  <div class="text-sm text-gray-600 mt-1">Implemented <a href="#">by IMDA</a></div>
-                </div>
-              </div>
-        </div>
-          
-          </div>
-          {% endif %}
-          {% if businesstype == "concert" %}
-          <div class="relative mx-auto mt-8 rounded-lg shadow max-w-sm p-10 bg-gray-100 text-gray-700 leading-snug flex flex-col justify-between">
-          
-          
-          
-          <div class="mt-2">
-            The National Arts Council (NAC) announced on Friday (May 28) that it would provide a second tranche of operating grants under the Arts and Culture Resilience Package (ACRP).<br><br>
-It expects to disburse grants of $35,000 to more than 200 arts and culture organisations from July onwards, to help defray their operating costs.
+          {% endif %} -->
 
-          </div>
-          <div class="mx-auto w-full border border-gray-300 my-8"></div>
-          <div>
-            <div class="flex items-center">
-                <div>
-                  <img class="w-12 h-12 rounded-full border-2 border-indigo-400"
-                    src="https://www.gov.sg/-/media/gov/logo.png">
-                </div>
-                <div class="ml-4">
-                  <div class="font-bold">Arts and Culture Resilience Package (ACRP).</div>
-                  <div class="text-sm text-gray-600 mt-1">Implemented <a href="#">in Budget 2021</a></div>
-                </div>
-              </div>
-        </div>
-          </div>
-          <div class="relative mx-auto mt-8 rounded-lg shadow max-w-sm p-10 bg-gray-100 text-gray-700 leading-snug flex flex-col justify-between">
-          
-          
-          
-          <div class="mt-2">
-             
-The COVID-19 Recovery Grant (CRG) provides temporary financial support to workers in lower- to middle-income households who are presently experiencing involuntary job loss, involuntary no-pay leave (NPL) or income loss due to the economic impact of COVID-19.
-          </div>
-          <div>
-            <div class="mx-auto w-full border border-gray-300 my-8"></div>
-            <div class="flex items-center">
-                <div>
-                  <img class="w-12 h-12 rounded-full border-2 border-indigo-400"
-                    src="https://www.gov.sg/-/media/gov/logo.png">
-                </div>
-                <div class="ml-4">
-                  <div class="font-bold">COVID-19 Recovery Grant</div>
-                  <div class="text-sm text-gray-600 mt-1">Apply by <a href="#">31 December 2021</a></div>
-                </div>
-              </div>
-        </div>
-          
-          </div>
-          {% endif %}
-          {% if businesstype == "sports" %}
-          <div class="relative mx-auto mt-8 rounded-lg shadow max-w-sm p-10 bg-gray-100 text-gray-700 leading-snug flex flex-col justify-between">
-          
-          
-          
-          <div class="mt-2">
-            Operating Grant: The Operating Grant will help businesses critical in contributing to the sports ecosystem (such as sport academies and clubs, facilities and league operators) to offset operating costs.<br><br>
-Capability Development Initiatives: These initiatives will go into developing capabilities through innovative offerings in sport events and sport programs, enhancing digital content development as well as offering training allowances for Coaches registered under the National Registry of Coaches (NROC) scheme.
-          </div>
-          <div class="mx-auto w-full border border-gray-300 my-8"></div>
-          <div>
-            <div class="flex items-center">
-                <div>
-                  <img class="w-12 h-12 rounded-full border-2 border-indigo-400"
-                    src="https://www.gov.sg/-/media/gov/logo.png">
-                </div>
-                <div class="ml-4">
-                  <div class="font-bold">Sports Resilience Package</div>
-                  <div class="text-sm text-gray-600 mt-1">Implemented <a href="#">28 May 2021</a></div>
-                </div>
-              </div>
-        </div>
-          </div>
-          
-          {% endif %}
-          {% if businesstype == "mice" %}
-          <div class="relative mx-auto mt-8 rounded-lg shadow max-w-sm p-10 bg-gray-100 text-gray-700 leading-snug flex flex-col justify-between">
-          
-          
-          
-          <div class="mt-2">
-            The Marketing Partnership Programme (MPP) is part of STB’s COVID-19 Recovery Plan. <br><br>
-
-Open to Singapore-registered MICE Event Organisers (EO) promoting inbound tourism, the Programme aims to support MICE EOs in their international marketing initiatives, market and maintain their international presence, position Singapore as the choice destination for business events and drive tourists' demand during recovery.<br><br>
-
-In view of the immediate challenge, the programme has dedicated part of the fund to support domestic marketing.  <br><br>
-          </div>
-          <div class="mx-auto w-full border border-gray-300 my-8"></div>
-          <div>
-            <div class="flex items-center">
-                <div>
-                  <img class="w-12 h-12 rounded-full border-2 border-indigo-400"
-                    src="https://www.gov.sg/-/media/gov/logo.png">
-                </div>
-                <div class="ml-4">
-                  <div class="font-bold">Marketing Partnership Programme - MICE Event Organisers</div>
-                  <div class="text-sm text-gray-600 mt-1">Implemented <a href="https://www.stb.gov.sg/content/stb/en/assistance-and-licensing/MPP/MPP-MICE-EOs1.html">by STB</a></div>
-                </div>
-              </div>
-        </div>
-          </div>
-          <div class="relative mx-auto mt-8 rounded-lg shadow max-w-sm p-10 bg-gray-100 text-gray-700 leading-snug flex flex-col justify-between">
-          
-          
-          
-          <div class="mt-2">
-            Singapore is a great place to do business, and SECB seeks to encourage the growth of quality events with fresh, exciting and innovative content in the country. Through the Business Events in Singapore (BEiS) scheme, SECB offers customised support such as help in securing venues, introductions with leading government agencies and business partners, as well as marketing and publicity support. Upon meeting the stringent evaluation criteria and deliverables, eligible companies will receive funding support through the scheme amounting to a certain percentage of qualifying costs. Funding is granted based on the scope and merits of the project.
-          </div>
-          <div>
-            <div class="mx-auto w-full border border-gray-300 my-8"></div>
-            <div class="flex items-center">
-                <div>
-                  <img class="w-12 h-12 rounded-full border-2 border-indigo-400"
-                    src="https://www.gov.sg/-/media/gov/logo.png">
-                </div>
-                <div class="ml-4">
-                  <div class="font-bold">Business Events in Singapore (BEiS)</div>
-                  <div class="text-sm text-gray-600 mt-1">Implemented <a href="https://www.visitsingapore.com/mice/en/plan-your-event/assistance-schemes/business-events-in-singapore/">by SECB</a></div>
-                </div>
-              </div>
-        </div>
-          
-          </div>
-          {% endif %}
-          {% if businesstype == "hospital" %}
-          <div class="relative mx-auto mt-8 rounded-lg shadow max-w-sm p-10 bg-gray-100 text-gray-700 leading-snug flex flex-col justify-between">
-          
-          
-          
-          <div class="mt-2">
-            For households whose family member(s) have contracted COVID-19 or are on QO, LOA or SHN.
-          </div>
-          <div class="mx-auto w-full border border-gray-300 my-8"></div>
-          <div>
-            <div class="flex items-center">
-                <div>
-                  <img class="w-12 h-12 rounded-full border-2 border-indigo-400"
-                    src="https://www.gov.sg/-/media/gov/logo.png">
-                </div>
-                <div class="ml-4">
-                  <div class="font-bold">The Courage Fund (TCF) - Lower-Income Households
-
-                  </div>
-                  <div class="text-sm text-gray-600 mt-1">
-                    Apply from <a href="#">6 April 2020 onwards.</a></div>
-                </div>
-              </div>
-        </div>
-          </div>
-          <div class="relative mx-auto mt-8 rounded-lg shadow max-w-sm p-10 bg-gray-100 text-gray-700 leading-snug flex flex-col justify-between">
-          
-          
-          
-          <div class="mt-2">
-            For dependants of individuals who have succumbed to COVID-19.- $30000
-          </div>
-          <div>
-            <div class="mx-auto w-full border border-gray-300 my-8"></div>
-            <div class="flex items-center">
-                <div>
-                  <img class="w-12 h-12 rounded-full border-2 border-indigo-400"
-                    src="https://www.gov.sg/-/media/gov/logo.png">
-                </div>
-                <div class="ml-4">
-                  <div class="font-bold">The Courage Fund (TCF) - Dependents</div>
-                  <div class="text-sm text-gray-600 mt-1">
-                    Apply from  <a href="#">6 Apr 2020 onwards</a></div>
-                </div>
-              </div>
-        </div>
-          
-          </div>
-          {% endif %}
-        
-        
         
       </div>
     </div>
@@ -822,37 +398,26 @@ In view of the immediate challenge, the programme has dedicated part of the fund
       </div>
       <script>
         document.addEventListener('DOMContentLoaded', function() {
-        var profit = "{{profit}}"
-        var salary = "{{salary}}"
+        var profit = "{{profit}}";
+        var salary = "{{salary}}";
+        var children = "{{children}}";
         var cost = 100
         document.querySelector('#cost').innerHTML = `- $${parseInt(cost)}`;
-        var businesstype = "{{businesstype}}"
-        if ((businesstype == "cinema") || (businesstype == "hotel") || (businesstype == "mice") || (businesstype == "concert")){
-          var percent = 0.6
-          var loss = profit * percent
-          document.querySelector('#profit').innerHTML = `$${parseInt(profit)}`;
-          document.querySelector('#loss').innerHTML = `- $${parseInt(loss)}`;
-          var final = profit - salary - loss - cost
-          document.querySelector('#final').innerHTML = `$${final}`;
-        }
-        else if ((businesstype == "Hawker") || (businesstype == "fnb") || (businesstype == "taxi")){
-          var percent = 0.5
-          var loss = profit * percent
-          document.querySelector('#profit').innerHTML = `$${parseInt(profit)}`;
-          document.querySelector('#loss').innerHTML = `- $${parseInt(loss)}`;
-          var final = profit - salary - loss - cost
+        var indivtype = "{{indivtype}}";
+        if (children == 'yes'){
+          var child = 200
+          document.querySelector('#profit').innerHTML = `$${parseInt(salary)}`;
+          document.querySelector('#salary').innerHTML = `- $${parseInt(child)}`;
+          var final = salary - cost - child;
           document.querySelector('#final').innerHTML = `$${final}`;
         }
         else{
-          var percent = 0.3
-          var loss = profit * percent
-          document.querySelector('#profit').innerHTML = `$${parseInt(profit)}`;
-          document.querySelector('#loss').innerHTML = `- $${parseInt(loss)}`;
-          var final = profit - salary - loss - cost
+          var child = 0
+          var final = salary - cost - child;
+          document.querySelector('#profit').innerHTML = `$${parseInt(salary)}`;
+          document.querySelector('#salary').innerHTML = `- $${parseInt(child)}`;
           document.querySelector('#final').innerHTML = `$${final}`;
-        }
-        
-      });
+      }});
       </script>
         <div class="sm:p-7 p-4">
             <table class="w-full text-left">
@@ -879,11 +444,11 @@ In view of the immediate challenge, the programme has dedicated part of the fund
                         <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800">
                           <div class="flex items-center">
                            
-                            Your Company
+                            You
                           </div>
                         </td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800 md:table-cell hidden">Monthly Profit</td>
-                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800 text-green-500" id = "profit" >${{profit}}</td>
+                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800 md:table-cell hidden">Monthly Salary</td>
+                        <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800 text-green-500" id = "profit">${{salary}}</td>
     
                   </tr>
                   <!-- SALARY -->
@@ -899,20 +464,21 @@ In view of the immediate challenge, the programme has dedicated part of the fund
                           <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
                           <line x1="1" y1="10" x2="23" y2="10"></line>
                         </svg>
-                        Salary
+                        Payments
                       </div>
                     </td>
                     <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800">
                       <div class="flex items-center">
                        
-                        {{employees}} Employees
+                        You
                       </div>
                     </td>
-                    <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800 md:table-cell hidden">Monthly Salary</td>
-                    <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800 text-red-500">- ${{salary}}</td>
+                    <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800 md:table-cell hidden">Child Costs</td>
+                    <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800 text-red-500" id = "salary">- ${{salary}}</td>
 
                   </tr>
-                  <!-- AGGREGATED LOSS -->
+                  
+                  <!-- COVID COSTS -->
                   <tr>
                     <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800">
                       <div class="flex items-center">
@@ -931,33 +497,7 @@ In view of the immediate challenge, the programme has dedicated part of the fund
                     <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800">
                       <div class="flex items-center">
                        
-                        Your Company
-                      </div>
-                    </td>
-                    <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800 md:table-cell hidden">Aggregate COVID-19 Impact</td>
-                    <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800 text-red-500" id = "loss">- ${{salary}}</td>
-
-                  </tr>
-                  <!-- AGGREGATED LOSS -->
-                  <tr>
-                    <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800">
-                      <div class="flex items-center">
-                        <!-- <svg viewBox="0 0 24 24" class="w-4 mr-5 text-yellow-500" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                          <circle cx="12" cy="12" r="10"></circle>
-                          <line x1="12" y1="8" x2="12" y2="12"></line>
-                          <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                        </svg> -->
-                        <svg viewBox="0 0 24 24" class="w-4 mr-5 text-gray-400" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                          <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
-                          <line x1="1" y1="10" x2="23" y2="10"></line>
-                        </svg>
-                        COVID
-                      </div>
-                    </td>
-                    <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800">
-                      <div class="flex items-center">
-                       
-                        Your Company
+                        You
                       </div>
                     </td>
                     <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800 md:table-cell hidden">Money Spent on Changing Restrictions</td>
@@ -980,7 +520,7 @@ In view of the immediate challenge, the programme has dedicated part of the fund
                         Your Company
                       </div>
                     </td>
-                    <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800 md:table-cell hidden">Remaining Profit</td>
+                    <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800 md:table-cell hidden">Money for Bills</td>
                     <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800 text-green-500" id = "final"></td>
                     
                   </tr>

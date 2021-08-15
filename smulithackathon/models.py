@@ -14,3 +14,12 @@ class Business(models.Model):
 
     def __str__ (self):
         return f"{self.businesstype}, {self.encryption}"
+
+class Individual(models.Model):
+    indivtype = models.CharField(blank = True, null = True,  max_length = 50)
+    children = models.CharField(blank = True, null = True,  max_length = 50)
+    salary = models.IntegerField(blank = True, null = True)
+    encryption = models.CharField(blank = True, null = True,  max_length = 50)
+
+    def __str__ (self):
+        return f"{self.businesstype}, {self.encryption}"
