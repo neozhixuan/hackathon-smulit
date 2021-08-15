@@ -138,9 +138,7 @@
                     document.querySelector('#active').innerHTML = `${active}`;
                     document.querySelector('#recovered').innerHTML = `${rec}`;
                     document.querySelector('#stablehospitalized').innerHTML = `${stablehosp}`;
-                    document.querySelector('#lastUpdatedAtApify').innerHTML = `[Contains information from https://apify.com/tugkan/covid-sg accessed on
-                    ${lastupdated} from {source of data} which is made available under the terms of the Singapore Open Data Licence 
-                    version 1.0 https://data.gov.sg/open-data-licence.] I am not affiliated with MOH, neither will I collect data from any personnel.`;
+                    document.querySelector('#lastUpdatedAtApify').innerHTML = `Powered by a SG API, last updated at ${lastupdated}`;
                 }    
                 else
                 {
@@ -149,9 +147,12 @@
             });
         });
         </script>
-        <h3 id = "features" class="md:px-20 leading-none font-black text-3xl ml-10 mr-10 mt-10 mb-10">
+        <h3 id = "features" class="md:px-20 leading-none font-black text-3xl ml-10 mr-10 mt-10 mb-5">
           SG Covid Statistics
         </h3>
+        <p id = "lastUpdatedAtApify" class="md:px-20 leading-none font-black ml-10 mr-10 mb-5" >
+          Powered by a SG API
+        </p>
         <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4 md:px-20">
           
           <div

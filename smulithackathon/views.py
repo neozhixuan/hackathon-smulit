@@ -34,8 +34,8 @@ def information(request):
             "encryption": unique_id,
             "businesstype": businesstype,
             "employees": employees,
-            "salary": salary,
-            "profit": int(profit)/12,
+            "salary": int(salary) * int(employees),
+            "profit": int(profit),
         })
 
 def login_view(request):
