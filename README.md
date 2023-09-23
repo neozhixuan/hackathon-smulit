@@ -1,4 +1,5 @@
 # OverCovid
+https://youtu.be/s2KbgBt5z4I
 10th place for SMU LIT Hackathon 2021. Developed via Django full-stack.
 
 ### Project Description
